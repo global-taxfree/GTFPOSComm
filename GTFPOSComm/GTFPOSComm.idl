@@ -1,0 +1,53 @@
+// GTFPOSComm.idl : ActiveX 컨트롤 프로젝트의 형식 라이브러리 소스입니다.
+
+// 이 파일은 MIDL 컴파일러 도구에 의해 처리되어
+// GTFPOSComm.ocx의 리소스가 되는
+// GTFPOSComm.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(1F2D1D9B-B695-4B5F-A7FD-C28032855E4D), version(1.0),
+  control ]
+library GTFPOSCommLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CGTFPOSCommCtrl의 기본 디스패치 인터페이스입니다.
+	[ 
+		uuid(C9E948B8-CF0D-4E62-AB0B-0B7DE7A7BE3D)	
+	]
+	dispinterface _DGTFPOSComm
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(1)] LONG GTF_RequestApproval(CHAR* P_Addr, LONG P_Port, CHAR* RequestMsg, LONG RequestLen, CHAR* RecvMsg, LONG ReadTimeOut);
+			[id(2)] void GTF_SetOffLineMode(LONG Mode);
+	};
+
+	//  CGTFPOSCommCtrl의 이벤트 디스패치 인터페이스입니다.
+
+	[ 
+		uuid(09F2AEF6-14BC-4CEE-A31F-5770892A37D2)	
+	]
+	dispinterface _DGTFPOSCommEvents
+	{
+		properties:
+			//  이벤트 인터페이스에 속성이 없습니다.
+
+		methods:
+	};
+
+	//  CGTFPOSCommCtrl의 클래스 정보입니다.
+	[
+		uuid(45D79FA2-0341-4AA3-B31A-E3CB37833BDD), licensed
+	]
+	coclass GTFPOSComm
+	{
+		[default] dispinterface _DGTFPOSComm;
+		[default, source] dispinterface _DGTFPOSCommEvents;
+	};
+
+};
